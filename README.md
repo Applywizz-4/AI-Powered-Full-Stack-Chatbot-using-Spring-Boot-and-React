@@ -1,195 +1,216 @@
-# spring-boot-ai-chatbot
-Your friendly personal assistant powered by OpenAI
+# AI-Powered Spring Boot and React Chatbot
 
-Here’s a detailed README file template for your project. This template covers the main aspects of your project, including an overview, installation steps, usage instructions, and more. You can customize it further according to your project’s specifics.
-
----
-
-# Spring AI Chatbot Learning Application
+A full-stack AI chatbot built with Java Spring Boot, React.js, Spring AI, and Groq LLaMA-3.3-70B Versatile. The application provides real-time, context-aware conversations through a REST-based architecture.
 
 ## Overview
 
-This project is a full-stack web application built with Spring Boot, Spring AI, React, and Docker. It serves as a learning tool for developers who want to get hands-on experience with Spring AI, leveraging the OpenAI API to create an intelligent chatbot. The chatbot can assist users in learning more about Spring AI by answering questions and providing information based on user queries.
+This project demonstrates the integration of Large Language Models with a modern Java full-stack application.
+
+The React frontend provides the chat interface, Spring Boot manages REST API communication, and Groq LLaMA processes natural-language queries and generates AI responses.
 
 ## Features
 
-- **Interactive Chatbot**: Engage with a chatbot to learn more about Spring AI and how to integrate it with your Spring Boot applications.
-- **Spring Boot Backend**: A robust backend powered by Spring Boot, utilizing Spring AI for processing and generating responses using the OpenAI API.
-- **React Frontend**: A user-friendly and responsive frontend built with React, providing an intuitive interface to interact with the chatbot.
-- **Dockerized Setup**: Both the frontend and backend are containerized using Docker, allowing easy setup and deployment.
+- Real-time AI-powered conversations
+- Groq LLaMA-3.3-70B Versatile integration
+- Spring AI integration
+- Spring Boot REST API
+- Responsive React interface
+- Axios-based API communication
+- CORS-enabled frontend and backend communication
+- Modular and scalable architecture
+- Cloud-ready deployment
+- Context-aware AI responses
 
-## Demo
+## Technology Stack
 
-Here’s a quick demo of how the project works:
+| Category | Technology |
+|---|---|
+| Backend | Java 21 |
+| Framework | Spring Boot 3.3+ |
+| AI Integration | Spring AI |
+| Frontend | React.js |
+| HTTP Client | Axios |
+| AI Provider | Groq Cloud |
+| AI Model | LLaMA-3.3-70B Versatile |
+| Build Tool | Maven 3.9+ |
+| Frontend Runtime | Node.js |
+| API | REST |
+| Testing | Postman / Thunder Client |
+| Version Control | Git / GitHub |
 
-### Image Example
+## Architecture
 
-![Project Screenshot](./chatbot-ui-screenshot.png)
+```text
+React Frontend
+      |
+      | REST API
+      v
+Spring Boot Backend
+      |
+      v
+Spring AI
+      |
+      v
+Groq Cloud API
+      |
+      v
+LLaMA-3.3-70B Versatile
+      |
+      v
+AI Response
+      |
+      v
+React Chat Interface
+Project Structure
+AI-Powered-Spring-Boot-React-Chatbot/
+|
+|-- spring-boot-ai-chatbot/
+|   |-- Spring Boot Backend
+|
+|-- chatbot-ui/
+|   |-- React Frontend
+|
+|-- README.md
+Prerequisites
 
-### Video Example
+Install the following before running the project:
 
-Watch the demo video:
+Java 21
+Maven 3.9+
+Node.js
+npm
+Git
+Groq API Key
 
-![Watch the video](./chatbot.gif.gif)
+Verify the installation:
 
+java -version
+mvn -version
+node -v
+npm -v
+git --version
+How to Run Locally
+1. Clone the Repository
+git clone <repository-url>
+cd <project-directory>
+2. Configure Groq API
 
-## Tech Stack
+Open:
 
-- **Backend**: 
-  - Java 17
-  - Spring Boot
-  - Spring AI
-  - OpenAI API
-- **Frontend**:
-  - React
-  - HTML5 & CSS3
-  - Axios
-  - Nginx (for serving the React app)
-- **DevOps**:
-  - Docker
-  - Docker Compose
+spring-boot-ai-chatbot/src/main/resources/application.yml
 
-## Prerequisites
+Configure:
 
-Before you begin, ensure you have the following installed on your machine:
+spring:
+  ai:
+    openai:
+      base-url: "https://api.groq.com/openai/v1"
+      api-key: "YOUR_GROQ_API_KEY"
+      chat:
+        options:
+          model: "llama-3.3-70b-versatile"
+          temperature: 0.7
 
-- [Docker](https://www.docker.com/products/docker-desktop)
-- [Docker Compose](https://docs.docker.com/compose/install/)
-- [Java 17](https://adoptopenjdk.net/) (if running the Spring Boot app locally)
-- [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) (if running the React app locally)
+Replace YOUR_GROQ_API_KEY with your actual Groq API key.
 
-## Getting Started
+Do not commit the API key to GitHub.
 
-### Clone the Repository
+3. Start the Backend
 
-```bash
-git clone https://github.com/vikasrajputin/spring-ai-chatbot.git
-cd spring-ai-chatbot
-```
+Open Terminal 1:
 
-### Project Structure
+cd spring-boot-ai-chatbot
+mvn clean install
+mvn spring-boot:run
 
-The project is organized into two main directories:
+Backend:
 
-- **spring-boot-ai-chatbot/**: Contains the Spring Boot application with Spring AI integration.
-- **chatbot-ui/**: Contains the React application that serves as the chatbot interface.
+http://localhost:8080
 
-### Setting Up the Environment
+Chat API:
 
-Before running the application, make sure to set up the environment variables for accessing the OpenAI API.
+POST http://localhost:8080/api/chat
+4. Start the Frontend
 
-1. **Create a `.env` file in the `spring-boot-ai-chatbot` directory**:
+Open Terminal 2:
 
-    ```bash
-    OPENAI_API_KEY=your_openai_api_key
-    ```
+cd chatbot-ui
+npm install
+npm start
 
-2. **(Optional) Create a `.env` file in the `chatbot-ui` directory if needed**.
+Frontend:
 
-### Running the Application with Docker
+http://localhost:3000
+5. Open the Application
 
-The project is fully dockerized, making it easy to run both the frontend and backend together.
+Open the following URL in your browser:
 
-1. **Build and run the containers**:
+http://localhost:3000
 
-    ```bash
-    docker-compose up --build
-    ```
+Enter a message and the request will be processed through:
 
-2. **Access the application**:
+React
+  |
+  v
+Spring Boot
+  |
+  v
+Spring AI
+  |
+  v
+Groq LLaMA
+  |
+  v
+AI Response
+  |
+  v
+React
+Local Ports
+Component	Port
+React Frontend	3000
+Spring Boot Backend	8080
+API Testing
 
-    - The Spring Boot application (backend) will be available at: `http://localhost:8080`
-    - The React application (frontend) will be available at: `http://localhost:3000`
+The REST API can be tested using Postman or Thunder Client.
 
-### Running the Applications Locally (Without Docker)
+Main endpoint:
 
-#### Backend (Spring Boot)
+POST http://localhost:8080/api/chat
+Application Workflow
+User enters a message in the React interface.
+React sends the request to Spring Boot.
+Spring Boot processes the request through /api/chat.
+Spring AI communicates with Groq.
+LLaMA-3.3-70B generates the response.
+Spring Boot returns the response to React.
+React displays the AI response.
+Deployment
 
-1. **Navigate to the `spring-boot-ai-chatbot/` directory**:
+The architecture supports cloud deployment.
 
-    ```bash
-    cd spring-boot-ai-chatbot/
-    ```
-
-2. **Build and run the Spring Boot application**:
-
-    ```bash
-    ./mvnw clean install spring-boot:run
-    ```
-
-3. **Access the backend API**: `http://localhost:8080`
-
-#### Frontend (React)
-
-1. **Navigate to the `chatbot-ui/` directory**:
-
-    ```bash
-    cd chatbot-ui
-    ```
-
-2. **Install the dependencies**:
-
-    ```bash
-    npm install
-    ```
-
-3. **Start the React application**:
-
-    ```bash
-    npm start
-    ```
-
-4. **Access the frontend**: `http://localhost:3000`
-
-### API Endpoints
-
-The backend provides the following key API endpoints:
-
-- **`GET /ai/chat/string`**: Accepts a `message` query parameter and returns a response generated by the AI model.
-  - **Example**: `http://localhost:8080/ai/chat/string?message=Tell me about Spring AI`
-  
-- **`POST /ai/chat`**: Accepts a JSON body with a `message` field and returns a response generated by the AI model.
-  - **Example**:
-    ```json
-    POST http://localhost:8080/ai/chat
-    Content-Type: application/json
-    
-    {
-      "message": "Explain how to use OpenAI with Spring Boot"
-    }
-    ```
-
-## Customization
-
-### Modifying the Frontend
-
-- The React frontend is located in the `chatbot-ui/` directory.
-- You can customize the UI by editing the components in the `src/` directory.
-- Update the styling by modifying the `Chatbot.css` file.
-
-### Modifying the Backend
-
-- The Spring Boot backend is located in the `spring-boot-ai-chatbot/` directory.
-- You can customize the AI responses by modifying the services and controllers in the `src/main/java` directory.
-- Update the Spring AI configuration in the `application.yml` file.
-
-## Deployment
-
-### Docker Deployment on Local
-
-To deploy the application to a local environment, you can use the Docker images built with the provided Dockerfiles.
-
-1. **Build the Docker images**:
-
-    ```bash
-    docker-compose build
-    ```
-
-### Manual Deployment (Without Docker)
-
-- **Backend**: Deploy the Spring Boot jar to a server or cloud service (e.g., AWS EC2, Heroku).
-- **Frontend**: Build the React app (`npm run build`) and serve it using a web server (e.g., Nginx, Apache).
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+Frontend
+Vercel
+Netlify
+Backend
+Render
+AWS EC2
+Railway
+Future Enhancements
+Voice-based communication
+Persistent conversation memory
+Multilingual support
+Sentiment analysis
+Adaptive learning
+CRM integrations
+HR system integrations
+Analytics dashboard integrations
+Enterprise cloud deployment
+Project Highlights
+Full-stack Java and React application
+Generative AI integration
+Spring AI and Groq integration
+Real-time conversational interface
+RESTful architecture
+Modular and scalable design
+Cloud-ready architecture
+Enterprise-oriented AI application
